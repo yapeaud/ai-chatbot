@@ -14,9 +14,10 @@ const port = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
-// Créer une instance du client OpenAI avec la clé API
+// Créer une instance du client OpenAI pointant vers l'API compatible de Groq
 const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.GROQ_API_KEY,
+    baseURL: 'https://api.groq.com/openai/v1',
 });
 
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 app.post('/chat', async (req, res) => {
     try {
         const reponse = await client.responses.create ({
-            model: "gpt-4o-mini",
+            model: "openai/gpt-oss-20b",
             input: req.body.message,
         });
         res.json({ message: reponse.output_text });
