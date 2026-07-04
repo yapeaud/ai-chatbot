@@ -22,7 +22,7 @@ const client = new OpenAI({
 
 // Définir une route GET pour vérifier que le serveur fonctionne
 app.get('/', (req, res) => {
-    res.send('Serveur en cours d\'exécution');
+    res.json({ message: 'Serveur en cours d\'exécution' });
 });
 
 // Définir une route POST pour gérer les requêtes de chat
