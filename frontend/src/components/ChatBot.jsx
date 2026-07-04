@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Send, Settings, Trash2, X } from 'lucide-react';
 
 // Base URL pour l'API backend
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:10000';
 
 const formatTime = () =>
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
